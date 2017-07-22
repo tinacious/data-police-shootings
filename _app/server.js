@@ -1,5 +1,6 @@
 'use strict';
 
+const path      = require('path');
 const express   = require('express');
 const csvToJSON = require('csvtojson');
 
@@ -41,6 +42,10 @@ csvToJSON()
 
     // GET /data
     app.get('/data', (req, res) => res.json({ data }));
+
+    // Public directory served from root
+    const publicPath = path.join(__dirname, 'public');
+    app.use('/', express.static(publicPath));
 
     // Start the server
     server = app.listen(port, () => {
