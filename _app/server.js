@@ -35,6 +35,8 @@ csvToJSON()
         body_camera: DataService.getBodyCameraData(data),
         race: DataService.getRaceData(data),
         age: DataService.getAgeData(data),
+        gender: DataService.getGenderData(data),
+        mental_illness: DataService.getMentalIllnessData(data)
       };
 
       return res.json(response);

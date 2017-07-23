@@ -68,10 +68,20 @@ const getDataForProperty = (data, prop) => {
 
 const getAgeData = (data) => {
   const reordered = _.orderBy(data, 'age').filter((o) => o.age > 0);
-  console.log('reordered',reordered)
   return getDataForProperty(reordered, 'age');
 };
 
+
+const getBooleanDataForKey = (data, key, labels) => {
+  const yes = data.filter((row) => !!row[key]).length;
+  const no = data.length - yes;
+  const percentages = getPercentages([ yes, no ], data.length);
+
+  return {
+    data: [ yes, no ],
+    labels: labels.map((label, index) => `${label} (${percentages[index]}%)`)
+  }
+}
 
 
 const getBodyCameraData = (data) => {
@@ -86,11 +96,22 @@ const getBodyCameraData = (data) => {
 };
 
 
+const getMentalIllnessData = (data) => {
+  return getBooleanDataForKey(data, 'signs_of_mental_illness', ['Signs of mental illness', 'No signs of mental illness']);
+};
+
+
+const getGenderData = (data) => {
+  return getDataForProperty(data, 'gender');
+};
+
 
 
 module.exports = {
   getRaceData: (data) => getDataForProperty(data, 'race'),
   getAgeData,
   transformRow,
-  getBodyCameraData
+  getBodyCameraData,
+  getMentalIllnessData,
+  getGenderData,
 };

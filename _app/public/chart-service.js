@@ -3,8 +3,8 @@
 (function () {
   const Chart = window.Chart;
   const coloursArray = [
-    '#ff6384',
     '#36a2eb',
+    '#ff6384',
     '#ff9f40',
     '#4bc0c0',
     '#ffcd56',
@@ -25,8 +25,7 @@
       .map((colour) => (
         Chart.helpers.color(colour).alpha(alpha).rgbString()
       ))
-  )
-
+  );
 
 
   window.ChartService = {
