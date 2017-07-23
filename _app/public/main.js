@@ -16,16 +16,12 @@
     .then((response) => response.json())
     .then((json) => {
       // Init all the charts
-
-
       initPieChart(json.race, 'race'); // Race chart
       initPieChart(json.body_camera, 'bodyCamera'); // Body camera chart
       initBarChart(json.age, 'age'); // Age chart
       initPieChart(json.mental_illness, 'mentalIllness'); // Mental illness camera chart
       initPieChart(json.gender, 'gender'); // Mental illness chart
-
-      console.log(json)
-
+      // console.log(json)
     });
   };
 
