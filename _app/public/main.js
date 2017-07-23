@@ -4,6 +4,8 @@
   const Chart = window.Chart;
   const ChartService = window.ChartService;
 
+  // Global chart settings
+  Chart.defaults.global.defaultFontFamily = '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif';
 
   window.onload = function () {
 
@@ -14,7 +16,14 @@
     .then((response) => response.json())
     .then((json) => {
       // Init all the charts
-      initRaceChart(json.race, 'race');
+
+      // Race chart
+      initPieChart(json.race, 'race');
+
+      // Body camera chart
+      initPieChart(json.body_camera, 'bodyCamera');
+
+      console.log(json)
     });
   };
 
@@ -23,26 +32,25 @@
    * Initialize the race chart
    * TODO: Pass in the data
    */
-  function initRaceChart(raceData, elementId) {
-    const raceChartElement = document.getElementById(elementId);
-    const ctx = raceChartElement.getContext('2d');
+  function initPieChart(responseData, elementId) {
+    const chartElement = document.getElementById(elementId);
+    const ctx = chartElement.getContext('2d');
 
     const data = {
       datasets: [
         {
-          data: raceData.data,
-          backgroundColor: ChartService.getChartColoursForData(raceData.data),
-          label: raceChartElement.dataset.label
+          data: responseData.data,
+          backgroundColor: ChartService.getChartColoursForData(responseData.data),
+          label: chartElement.dataset.label
         }
       ],
-      labels: raceData.labels
+      labels: responseData.labels
     };
 
     // Create the race chart
     window.raceChart = new Chart(ctx, {
       type: 'pie',
-      data,
-      options: ChartService.defaultChartOptions()
+      data
     });
   }
 

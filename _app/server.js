@@ -32,6 +32,7 @@ csvToJSON()
     app.get('/data', (req, res) => {
       const response = {
         data,
+        body_camera: DataService.getBodyCameraData(data),
         race: DataService.getRaceData(data)
       };
 

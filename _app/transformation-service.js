@@ -25,6 +25,23 @@ const transformRow = (rowObj) => (
 );
 
 
+/**
+ * Finds the percentage value for the provided data
+ * @param {Array} data
+ * @param {Number} pos
+ */
+const getPercentages = (data, total) => {
+  const percentages = [];
+
+  data.forEach((row, index) => {
+    const percentage = ((data[index] / total) * 100).toFixed(1);
+    percentages.push(percentage);
+  });
+
+  return percentages;
+};
+
+
 
 /**
  * Gets numbers by race
@@ -43,14 +60,31 @@ const getRaceData = (data) => {
     raceCountMap[race] += 1;
   });
 
+  const values = _.values(raceCountMap);
+  const percentages = getPercentages(values, data.length);
+  const labels = _.keys(raceCountMap).map((label, index) => label += ` (${percentages[index]}%)`)
+
   return {
-    data   : _.values(raceCountMap),
-    labels : _.keys(raceCountMap)
+    data   : values,
+    labels : labels
+  };
+};
+
+
+const getBodyCameraData = (data) => {
+  const hadBodyCameraOn = data.filter((row) => !!row.body_camera).length;
+  const hadBodyCameraOff = data.length - hadBodyCameraOn;
+  const percentages = getPercentages([ hadBodyCameraOn, hadBodyCameraOff], data.length)
+
+  return {
+    data: [ hadBodyCameraOn, hadBodyCameraOff ],
+    labels: [ `On (${percentages[0]}%)`, `Off (${percentages[1]}%)` ]
   };
 };
 
 
 module.exports = {
   getRaceData,
-  transformRow
+  transformRow,
+  getBodyCameraData
 };

@@ -10,7 +10,7 @@ const coloursArray = [
   '#7a56ff'
 ];
 
-const defaultChartOptions = () => ({ responsive: true });
+// const defaultChartOptions = () => ({ responsive: true });
 
 const getChartColoursForData = (data) => {
   return data.map((item, index) => {
@@ -20,6 +20,6 @@ const getChartColoursForData = (data) => {
 
 
 window.ChartService = {
-  defaultChartOptions,
+  // defaultChartOptions,
   getChartColoursForData
 };
