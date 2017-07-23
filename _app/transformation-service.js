@@ -85,14 +85,7 @@ const getBooleanDataForKey = (data, key, labels) => {
 
 
 const getBodyCameraData = (data) => {
-  const hadBodyCameraOn = data.filter((row) => !!row.body_camera).length;
-  const hadBodyCameraOff = data.length - hadBodyCameraOn;
-  const percentages = getPercentages([ hadBodyCameraOn, hadBodyCameraOff], data.length)
-
-  return {
-    data: [ hadBodyCameraOn, hadBodyCameraOff ],
-    labels: [ `On (${percentages[0]}%)`, `Off (${percentages[1]}%)` ]
-  };
+  return getBooleanDataForKey(data, 'body_camera', ['On', 'Off']);
 };
 
 
