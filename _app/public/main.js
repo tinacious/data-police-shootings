@@ -26,23 +26,16 @@
   };
 
 
-  /**
-   * Initialize the race chart
-   * TODO: Pass in the data
-   */
-  function initPieChart(responseData, elementId, randomizeColours) {
+
+  function initPieChart(responseData, elementId) {
     const chartElement = document.getElementById(elementId);
     const ctx = chartElement.getContext('2d');
-    const colours = ChartService.getTransparentColoursForData(responseData.data, 0.7);
-    if (randomizeColours) {
-      // TODO: something
-    }
 
     const data = {
       datasets: [
         {
           data: responseData.data,
-          backgroundColor: colours,
+          backgroundColor: ChartService.getTransparentColoursForData(responseData.data, 0.7),
           borderColor: ChartService.getChartColoursForData(responseData.data),
           borderWidth: 1,
           label: chartElement.dataset.label
@@ -50,6 +43,7 @@
       ],
       labels: responseData.labels
     };
+
 
     // Create the race chart
     window.raceChart = new Chart(ctx, {
@@ -87,5 +81,3 @@
   }
 
 })();
-
-

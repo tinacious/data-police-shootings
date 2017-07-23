@@ -9,6 +9,7 @@ There are plans to represent the following data visually:
 - Armed status
 - Fleeing status
 - States
+- Date representation
 
 ## Development
 

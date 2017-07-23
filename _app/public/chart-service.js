@@ -12,13 +12,17 @@
     '#7a56ff'
   ];
 
-  // const defaultChartOptions = () => ({ responsive: true });
 
-  const getChartColoursForData = (data) => {
-    return data.map((item, index) => {
-      return coloursArray[index % coloursArray.length]
-    })
-  };
+  /**
+   * TODO: Provide a way to randomize colours,
+   * especially for smaller datasets (boolean)
+   */
+
+
+  const getChartColoursForData = (data) => (
+    data.map((item, index) => coloursArray[index % coloursArray.length])
+  );
+
 
   const getTransparentColoursForData = (data, alpha) => (
     getChartColoursForData(data)
@@ -29,7 +33,6 @@
 
 
   window.ChartService = {
-    // defaultChartOptions,
     getChartColoursForData,
     getTransparentColoursForData
   };

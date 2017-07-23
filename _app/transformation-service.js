@@ -14,6 +14,13 @@ const raceMap = {
 };
 
 
+/**
+ * Transform the row to be the way we want it,
+ * e.g. age should be a nothing but a number,
+ * race should be a word, and other values should be booleans
+ * @param {Object} rowObj
+ * @return {Object}
+ */
 const transformRow = (rowObj) => (
   Object.assign({}, rowObj, {
       id                      : Number(rowObj.id),
@@ -42,7 +49,13 @@ const getPercentages = (data, total) => {
 };
 
 
-
+/**
+ * Transforms the provided data into an object that the charts like,
+ * including `data` and `labels` properties
+ * @param {Object} data
+ * @param {String} prop
+ * @return {Object}
+ */
 const getDataForProperty = (data, prop) => {
   const kvMap = {};
 
@@ -71,7 +84,27 @@ const getAgeData = (data) => {
   return getDataForProperty(reordered, 'age');
 };
 
+const getRaceData = (data) => {
+  return getDataForProperty(data, 'race');
+};
 
+const getBodyCameraData = (data) => {
+  return getBooleanDataForKey(data, 'body_camera', ['On', 'Off']);
+};
+
+const getGenderData = (data) => {
+  return getDataForProperty(data, 'gender');
+};
+
+
+
+/**
+ * Transforms the provided data into an object that the charts like,
+ * but for boolean data. These properties include `data` and `labels`
+ * @param {Object} data
+ * @param {String} prop
+ * @return {Object}
+ */
 const getBooleanDataForKey = (data, key, labels) => {
   const yes = data.filter((row) => !!row[key]).length;
   const no = data.length - yes;
@@ -81,27 +114,15 @@ const getBooleanDataForKey = (data, key, labels) => {
     data: [ yes, no ],
     labels: labels.map((label, index) => `${label} (${percentages[index]}%)`)
   }
-}
-
-
-const getBodyCameraData = (data) => {
-  return getBooleanDataForKey(data, 'body_camera', ['On', 'Off']);
 };
-
 
 const getMentalIllnessData = (data) => {
   return getBooleanDataForKey(data, 'signs_of_mental_illness', ['Signs of mental illness', 'No signs of mental illness']);
 };
 
 
-const getGenderData = (data) => {
-  return getDataForProperty(data, 'gender');
-};
-
-
-
 module.exports = {
-  getRaceData: (data) => getDataForProperty(data, 'race'),
+  getRaceData,
   getAgeData,
   transformRow,
   getBodyCameraData,
