@@ -35,7 +35,7 @@ const transformRow = (rowObj) => (
 /**
  * Finds the percentage value for the provided data
  * @param {Array} data
- * @param {Number} pos
+ * @param {Array}
  */
 const getPercentages = (data, total) => {
   const percentages = [];
