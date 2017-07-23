@@ -35,15 +35,21 @@
    * Initialize the race chart
    * TODO: Pass in the data
    */
-  function initPieChart(responseData, elementId) {
+  function initPieChart(responseData, elementId, randomizeColours) {
     const chartElement = document.getElementById(elementId);
     const ctx = chartElement.getContext('2d');
+    const colours = ChartService.getTransparentColoursForData(responseData.data, 0.7);
+    if (randomizeColours) {
+      // TODO: something
+    }
 
     const data = {
       datasets: [
         {
           data: responseData.data,
-          backgroundColor: ChartService.getChartColoursForData(responseData.data),
+          backgroundColor: colours,
+          borderColor: ChartService.getChartColoursForData(responseData.data),
+          borderWidth: 1,
           label: chartElement.dataset.label
         }
       ],
@@ -66,7 +72,9 @@
       datasets: [
         {
           data: responseData.data,
-          backgroundColor: ChartService.getChartColoursForData(responseData.data),
+          backgroundColor: ChartService.getTransparentColoursForData(responseData.data, 0.7),
+          borderColor: ChartService.getChartColoursForData(responseData.data),
+          borderWidth: 1,
           label: chartElement.dataset.label
         }
       ],

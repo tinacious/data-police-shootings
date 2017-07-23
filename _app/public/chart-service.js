@@ -1,25 +1,39 @@
 'use strict';
 
-const coloursArray = [
-  '#ff6384',
-  '#36a2eb',
-  '#ff9f40',
-  '#4bc0c0',
-  '#ffcd56',
-  '#c8c8c8',
-  '#7a56ff'
-];
+(function () {
+  const Chart = window.Chart;
+  const coloursArray = [
+    '#ff6384',
+    '#36a2eb',
+    '#ff9f40',
+    '#4bc0c0',
+    '#ffcd56',
+    '#c8c8c8',
+    '#7a56ff'
+  ];
 
-// const defaultChartOptions = () => ({ responsive: true });
+  // const defaultChartOptions = () => ({ responsive: true });
 
-const getChartColoursForData = (data) => {
-  return data.map((item, index) => {
-    return coloursArray[index % coloursArray.length]
-  })
-};
+  const getChartColoursForData = (data) => {
+    return data.map((item, index) => {
+      return coloursArray[index % coloursArray.length]
+    })
+  };
+
+  const getTransparentColoursForData = (data, alpha) => (
+    getChartColoursForData(data)
+      .map((colour) => (
+        Chart.helpers.color(colour).alpha(alpha).rgbString()
+      ))
+  )
 
 
-window.ChartService = {
-  // defaultChartOptions,
-  getChartColoursForData
-};
+
+  window.ChartService = {
+    // defaultChartOptions,
+    getChartColoursForData,
+    getTransparentColoursForData
+  };
+
+})()
+
