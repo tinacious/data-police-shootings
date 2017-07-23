@@ -7,7 +7,6 @@ const csvToJSON = require('csvtojson');
 const DataService = require('./transformation-service');
 
 const app  = express();
-const port = process.env.PORT || 2508;
 
 
 let server       = null;
@@ -47,6 +46,7 @@ csvToJSON()
     app.use('/', express.static(publicPath));
 
     // Start the server
+    const port = process.env.PORT || data.length; // if this is > 65536 we're in trouble (local)
     server = app.listen(port, () => {
       console.log(`Listening at http://localhost:${port}`); // eslint-disable-line no-console
     });

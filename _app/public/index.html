@@ -13,7 +13,8 @@
     <h1>Washington Post data on fatal police shootings</h1>
 
     <div class="lead">
-        This project uses the <a href="https://github.com/washingtonpost/data-police-shootings/blob/master/fatal-police-shootings-data.csv" target="_blank">data provided by the Washington Post</a> for all of its charts.
+      This project uses the <a href="https://github.com/washingtonpost/data-police-shootings/blob/master/fatal-police-shootings-data.csv"
+        target="_blank">data provided by the Washington Post</a> for all of its charts.
       </p>
       <p>
         The data represents fatal police shootings, and looks at a number demographic factors.
@@ -22,7 +23,8 @@
         I am <strong>not</strong> the creator of this data set, I am simply visualizing it.
       </p>
       <p>
-        Feel free to help out with some charts on <a href="https://github.com/tinacious/data-police-shootings/tree/master/_app" target="_blank">Github</a>.
+        This project is a work in progress. Not all of the data is represented yet, but you can see the roadmap, peep the code, and/or help out with
+        some charts on <a href="https://github.com/tinacious/data-police-shootings/tree/master/_app" target="_blank">Github</a>.
       </p>
     </div>
 
@@ -58,10 +60,26 @@
 
   </div>
 
+  <div class="comments">
+    <div class="container">
+      <div id="disqus_thread"></div>
+      <script>
+        (function () { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://police-shootings-usa-wapo.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </div>
+
   <footer class="footer">
     <div class="container">
       <p>
-        Made with love &hearts; by <a href="https://tinaciousdesign.com" target="_blank"><strong>Tinacious Design</strong></a> using <a href="http://www.chartjs.org/" target="_blank">Chart.js</a> and <a href="https://nodejs.org/en/" target="_blank">Node.js</a>
+        Made with love &hearts; by <a href="https://tinaciousdesign.com" target="_blank"><strong>Tinacious Design</strong></a>        using <a href="http://www.chartjs.org/" target="_blank">Chart.js</a> and <a href="https://nodejs.org/en/" target="_blank">Node.js</a>
       </p>
     </div>
   </footer>
@@ -70,6 +88,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
   <script src="chart-service.js"></script>
   <script src="main.js"></script>
+  <script id="dsq-count-scr" src="//police-shootings-usa-wapo.disqus.com/count.js" async></script>
 </body>
 
 </html>
