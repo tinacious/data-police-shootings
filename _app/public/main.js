@@ -44,12 +44,7 @@
       labels: responseData.labels
     };
 
-
-    // Create the race chart
-    window.raceChart = new Chart(ctx, {
-      type: 'pie',
-      data
-    });
+    new Chart(ctx, { type: 'pie', data });
   }
 
 
@@ -70,8 +65,7 @@
       labels: responseData.labels
     };
 
-    // Create the race chart
-    window.raceChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'bar',
       data,
       options: {
