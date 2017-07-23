@@ -4,6 +4,8 @@ const path      = require('path');
 const express   = require('express');
 const csvToJSON = require('csvtojson');
 
+const DataService = require('./transformation-service');
+
 const app  = express();
 const port = process.env.PORT || 2508;
 
@@ -11,45 +13,38 @@ const port = process.env.PORT || 2508;
 let server       = null;
 const pathToData = `${__dirname}/../fatal-police-shootings-data.csv`;
 const data       = [];
-const raceMap = {
-  W  : 'White',
-  B  : 'Black',
-  H  : 'Hispanic',
-  A  : 'Asian',
-  N  : 'Native American',
-  O  : 'Other',
-  '' : 'Unknown'
-};
+
 
 csvToJSON()
   .fromFile(pathToData)
   .on('json', (rowObj) => {
     // Transform the data
-    const transformedRow = Object.assign({}, rowObj, {
-      id                      : Number(rowObj.id),
-      age                     : Number(rowObj.age),
-      race                    : raceMap[rowObj.race || ''],
-      signs_of_mental_illness : eval(rowObj.signs_of_mental_illness.toLowerCase()),
-      body_camera             : eval(rowObj.body_camera.toLowerCase()),
-    });
-
+    const transformedRow = DataService.transformRow(rowObj);
     data.push(transformedRow);
   })
   .on('done', (err) => {
     if (err) throw err;
 
-    // console.log(data)
-
+    /**
+     * Routes
+     */
     // GET /data
-    app.get('/data', (req, res) => res.json({ data }));
+    app.get('/data', (req, res) => {
+      const response = {
+        data,
+        race: DataService.getRaceData(data)
+      };
 
-    // Public directory served from root
+      return res.json(response);
+    });
+
+    // GET / – Public directory served from root
     const publicPath = path.join(__dirname, 'public');
     app.use('/', express.static(publicPath));
 
     // Start the server
     server = app.listen(port, () => {
-      console.log(`Listening at http://localhost:${port}`);
+      console.log(`Listening at http://localhost:${port}`); // eslint-disable-line no-console
     });
   });
 

@@ -2,6 +2,10 @@
   "plugins": [
     "node"
   ],
+  "globals": {
+    "window": true,
+    "document": true
+  },
   "env": {
     "mocha": true
   },

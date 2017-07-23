@@ -1,1 +1,36 @@
-<h1>Hello world</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Washington Post data on fatal police shootings</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <h1>Washington Post data on fatal police shootings</h1>
+
+      <div class="charts-wrapper">
+
+        <!-- Race -->
+        <div class="chart">
+          <h2 class="chart__title">Race</h2>
+          <canvas id="race" label="Race"></canvas>
+        </div>
+
+        <!-- <div class="chart">
+          <h2 class="chart__title"></h2>
+          <canvas id="" label=""></canvas>
+        </div> -->
+
+      </div>
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+    <script src="chart-service.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
