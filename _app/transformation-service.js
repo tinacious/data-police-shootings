@@ -43,32 +43,35 @@ const getPercentages = (data, total) => {
 
 
 
-/**
- * Gets numbers by race
- * @return { data, labels }
- */
-const getRaceData = (data) => {
-  const raceCountMap = {};
+const getDataForProperty = (data, prop) => {
+  const kvMap = {};
 
   data.forEach((row) => {
-    const race = row.race;
-
-    if (!raceCountMap[race]) {
-      raceCountMap[race] = 0;
+    const key = row[prop];
+    if (!kvMap[key]) {
+      kvMap[key] = 0;
     }
 
-    raceCountMap[race] += 1;
+    kvMap[key] += 1;
   });
 
-  const values = _.values(raceCountMap);
+  const values = _.values(kvMap);
   const percentages = getPercentages(values, data.length);
-  const labels = _.keys(raceCountMap).map((label, index) => label += ` (${percentages[index]}%)`)
+  const labels = _.keys(kvMap).map((label, index) => label += ` (${percentages[index]}%)`)
 
   return {
     data   : values,
     labels : labels
   };
 };
+
+
+const getAgeData = (data) => {
+  const reordered = _.orderBy(data, 'age').filter((o) => o.age > 0);
+  console.log('reordered',reordered)
+  return getDataForProperty(reordered, 'age');
+};
+
 
 
 const getBodyCameraData = (data) => {
@@ -83,8 +86,11 @@ const getBodyCameraData = (data) => {
 };
 
 
+
+
 module.exports = {
-  getRaceData,
+  getRaceData: (data) => getDataForProperty(data, 'race'),
+  getAgeData,
   transformRow,
   getBodyCameraData
 };

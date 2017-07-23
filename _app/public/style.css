@@ -21,6 +21,7 @@ body {
   .charts-wrapper {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
 
@@ -43,6 +44,11 @@ body {
 @media (min-width: 600px) {
   .chart {
     width: 48%;
+    margin-bottom: 40px;
+  }
+
+  .chart--wide {
+    width: 100%;
     margin-bottom: 40px;
   }
 }

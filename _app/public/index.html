@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Washington Post data on fatal police shootings</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
 
-  <body>
+<head>
+  <title>Washington Post data on fatal police shootings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    <div class="container">
+<body>
 
-      <h1>Washington Post data on fatal police shootings</h1>
+  <div class="container">
 
-      <div class="charts-wrapper">
+    <h1>Washington Post data on fatal police shootings</h1>
 
-        <!-- Race -->
-        <div class="chart">
-          <h2 class="chart__title">Race</h2>
-          <canvas id="race" label="Race"></canvas>
-        </div>
+    <div class="charts-wrapper">
 
-         <div class="chart">
-          <h2 class="chart__title">Body Camera</h2>
-          <canvas id="bodyCamera" label="Body camera was on"></canvas>
-        </div>
+      <!-- Race -->
+      <div class="chart">
+        <h2 class="chart__title">Race</h2>
+        <canvas id="race" data-label="Race"></canvas>
+      </div>
 
+      <div class="chart">
+        <h2 class="chart__title">Body Camera</h2>
+        <canvas id="bodyCamera" data-label="Body Camera"></canvas>
+      </div>
+
+      <div class="chart chart--wide">
+        <h2 class="chart__title">Age</h2>
+        <canvas id="age" data-label="Age"></canvas>
       </div>
 
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
-    <script src="chart-service.js"></script>
-    <script src="main.js"></script>
-  </body>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.3/fetch.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+  <script src="chart-service.js"></script>
+  <script src="main.js"></script>
+</body>
+
 </html>

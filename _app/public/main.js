@@ -23,7 +23,10 @@
       // Body camera chart
       initPieChart(json.body_camera, 'bodyCamera');
 
+      initBarChart(json.age, 'age');
+
       console.log(json)
+
     });
   };
 
@@ -51,6 +54,32 @@
     window.raceChart = new Chart(ctx, {
       type: 'pie',
       data
+    });
+  }
+
+
+  function initBarChart(responseData, elementId) {
+    const chartElement = document.getElementById(elementId);
+    const ctx = chartElement.getContext('2d');
+
+    const data = {
+      datasets: [
+        {
+          data: responseData.data,
+          backgroundColor: ChartService.getChartColoursForData(responseData.data),
+          label: chartElement.dataset.label
+        }
+      ],
+      labels: responseData.labels
+    };
+
+    // Create the race chart
+    window.raceChart = new Chart(ctx, {
+      type: 'bar',
+      data,
+      options: {
+        legend: { display: false }
+      }
     });
   }
 
