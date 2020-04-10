@@ -42,7 +42,7 @@ csvToJSON()
     });
 
     // GET / – Public directory served from root
-    const publicPath = path.join(__dirname, 'public');
+    const publicPath = path.join(__dirname, '../public');
     app.use('/', express.static(publicPath));
 
     // Start the server
