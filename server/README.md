@@ -1,6 +1,5 @@
-The app loads at the index of the server.
+You can run the files with the server or as a static bundle.
 
-The data is retrieved from the `GET /data` endpoint
 
 ## Roadmap
 
@@ -10,6 +9,7 @@ There are plans to represent the following data visually:
 - Fleeing status
 - States
 - Date representation
+
 
 ## Data
 
@@ -42,3 +42,10 @@ To run the development server:
     npm run dev
 
 The application is served on the port mentioned in the console.
+
+
+## Server
+
+To run the server, run:
+
+    npm start
