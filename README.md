@@ -1,9 +1,10 @@
 # Police shootings in America visualized
 
-This project is a fork from the [Washington Post's police shootings data](https://github.com/washingtonpost/data-police-shootings).
+This project is a fork from the [Washington Post's police shootings data](https://github.com/washingtonpost/data-police-shootings). 
 
 ### [See the visualizations](https://tinacious.github.io/police-shootings-wapo-data)
 
+The [original readme 👇](https://github.com/tinacious/police-shootings-wapo-data#original-readme-)
 
 ## About the data
 
