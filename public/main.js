@@ -10,7 +10,7 @@
   window.onload = function () {
 
     // Call the API
-    window.fetch('/data', {
+    window.fetch('data.json', {
       method: 'get'
     })
     .then((response) => response.json())
