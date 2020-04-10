@@ -10,7 +10,7 @@
   window.onload = function () {
 
     // Call the API
-    window.fetch('/data', {
+    window.fetch('data.json', {
       method: 'get'
     })
     .then((response) => response.json())
@@ -21,11 +21,17 @@
       initBarChart(json.age, 'age'); // Age chart
       initPieChart(json.mental_illness, 'mentalIllness'); // Mental illness camera chart
       initPieChart(json.gender, 'gender'); // Mental illness chart
+      setUpdatedAtDate(json, 'updatedAt');
       // console.log(json)
     });
   };
 
+  function setUpdatedAtDate(responseData, elementId) {
+    const date = new Date(responseData.updated_at).toLocaleDateString('en-CA', { dateStyle: 'long', timeStyle: 'long'})
+    const updatedAtElement = document.getElementById(elementId);
 
+    updatedAtElement.innerText = date;
+  }
 
   function initPieChart(responseData, elementId) {
     const chartElement = document.getElementById(elementId);

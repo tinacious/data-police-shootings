@@ -1,8 +1,8 @@
 This project is a fork from the [Washington Post's police shootings data](https://github.com/washingtonpost/data-police-shootings).
 
-Please see the [_app folder](https://github.com/tinacious/data-police-shootings/blob/master/_app).
+Please see the [server folder](https://github.com/tinacious/data-police-shootings/blob/master/server) for development and deployment docs.
 
-[See the project in action](https://police-shootings-usa-wapo-data.herokuapp.com/).
+[See the project in action](https://tinacious.github.io/data-police-shootings/).
 
 ---
 
