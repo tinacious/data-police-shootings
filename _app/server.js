@@ -1,9 +1,8 @@
 'use strict';
 
-const path      = require('path');
-const express   = require('express');
-const app  = express();
-
+const path = require('path');
+const express = require('express');
+const app = express();
 
 // GET / – Public directory served from root
 const publicPath = path.join(__dirname, '../public');
