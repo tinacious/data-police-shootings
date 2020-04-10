@@ -1,9 +1,73 @@
+# Police shootings in America visualized
+
 This project is a fork from the [Washington Post's police shootings data](https://github.com/washingtonpost/data-police-shootings).
 
-Please see the [server folder](https://github.com/tinacious/data-police-shootings/blob/master/server) for development and deployment docs.
+### [See the visualizations](https://tinacious.github.io/police-shootings-wapo-data)
 
-[See the visualizations](https://tinacious.github.io/police-shootings-wapo-data).
 
+## About the data
+
+The data is a static CSV file from the [origin repository](https://github.com/washingtonpost/data-police-shootings).
+
+To update the data, you'll need to add a local reference to the original repo, which we'll call `upstream`. This has been automated.
+
+Then, we will need to transform the data from CSV to JSON for the app.
+
+
+### Updating the data
+
+Run the following command:
+
+    npm run update
+
+
+### Transforming the data for the app
+
+Run the following command:
+
+    npm run data
+
+
+## Development
+
+To run the development server:
+
+    npm install
+    npm run dev
+
+The application is served on the port mentioned in the console.
+
+
+## Deployment
+
+### Static files (recommended)
+
+This is the recommended way to deploy the app since it can be served as static assets.
+
+The following script will deploy to a `gh-pages` branch:
+
+    npm run deploy
+
+
+### Server
+
+Alternatively, if you'd like to use a server, you can. To run the server, run:
+
+    npm start
+
+
+## Roadmap
+
+There are plans to represent the following data visually:
+
+- Armed status
+- Fleeing status
+- States
+- Date representation
+
+
+---
+Original README 👇
 ---
 
 [This data is published under an [Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) license](https://creativecommons.org/licenses/by-nc-sa/4.0/)]

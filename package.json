@@ -5,6 +5,7 @@
   "scripts": {
     "eslint": "./node_modules/.bin/eslint --fix _app",
     "start": "node server/server.js",
+    "update": "./scripts/update_data.sh",
     "data": "node scripts/csv_to_json.js",
     "dev": "static-server public",
     "deploy": "git subtree push --prefix public origin gh-pages"
